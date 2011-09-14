@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+<table>
+  <tr>	
+    <td><b>Name:</b></td>
+    <td><%= @plan.name %></td>
+  </tr>
+  <tr>
+    <td><b>Email:</b></td>
+    <td><%= @plan.email %></td>
+  </tr>
+  <tr>
+    <td><b>Phone:</b></td>
+    <td><%= @plan.phone %></td>
+  </tr>
+  <tr>
+    <td><b>Description:</b></td>
+    <td><%= simple_format(@plan.description) %></td>
+  </tr>
+  <tr>
+	<td><b>Attachment:</b></td>
+   
+	<td><%= link_to "#{@plan.file_file_name}", @plan.file.url(@plan.file.default_style, false), :target=>"_new" %>[<%= number_to_human_size(@plan.file_file_size) %>]</td>
+  </tr>
+</table>
+
+
+<%= link_to 'Edit', edit_plan_path(@plan) %> |
+<%= link_to 'Back', plans_path %>

@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Description:</b>
+  <%= simple_format(@news.description) %>
+</p>
+
+<p>
+  <b>Published on:</b>
+  <%= @news.published_on %>
+</p>
+
+
+<% if admin? %>
+<p>
+  <b>Show:</b>
+  <%= @news.show %>
+</p>
+<%= link_to 'Edit', edit_news_path(@news) %>
+<% end %>
+<%= link_to 'Back', news_index_path%>

@@ -1,0 +1,10 @@
+<div data-role="header">
+		<h1>Latest News</h1>
+</div>
+<div data-role="content">
+  <ul data-role="listview" data-theme="e">
+    <% @news.each do |news| %>
+    <li><h4><%= news.published_on.strftime("%B %e, %Y") %></h4><p><%= simple_format(news.description) %></p></li>
+    <% end %>
+  </ul>  
+</div>  

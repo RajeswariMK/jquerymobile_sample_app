@@ -1,0 +1,54 @@
+<!--[if IE 8]>
+<style type="text/css">
+  html #wrapper #left { left:0; top:0; width:254px; float:left; background:#128ec2; border-right:1px solid #cde7f2; height:100%; position:fixed; overflow: auto; }	
+  a img { border:none; }
+</style>
+<![endif]-->
+<% content_for :title_image do %>
+  <img src="/images/manage_plans.jpg" id="header" alt="Connect With Us" />
+<% end %>
+
+<script type="text/javascript">
+  	$(document).ready(function() {
+	 $('#list_plans').dataTable({
+	 	"aoColumnDefs": [
+		{ "bSortable": false, "aTargets": [ 5, 6 ] }
+		],
+		"iDisplayLength": 5,
+  		"aLengthMenu": [[5,10, 25, 50, -1], [5,10, 25, 50, "All"]],
+		"bJQueryUI": true,
+		"sPaginationType": "full_numbers"
+	 });
+    });
+</script>
+<div id="demo"> 
+<table id= "list_plans" class="display">
+ <thead>	
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Description</th>
+    <th>Attachment</th>
+	<th>Date</th>
+	<th>Action</th>
+  </tr>
+</thead>
+<tbody>
+<% @plans.each do |plan| %>
+  <tr valign="top">
+    <td><%= plan.name %></td>
+    <td><%= plan.email %></td>
+    <td><%= plan.phone %></td>
+    <td><%= simple_format(plan.description) %></td>
+    <td><% if plan.file? %><%= link_to "#{plan.file_file_name}", plan.file.url(plan.file.default_style, false), :target=>"_new" %>[<%= number_to_human_size(plan.file_file_size) %>]<% else %> No file chosen<%end%></td>
+	  <td><%= time_ago_in_words(plan.created_at) %> ago</td>
+    <td><%= link_to image_tag('delete.png'), plan, :method => :delete, :confirm => "Are you sure?" %> </td>
+
+  </td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+</div>

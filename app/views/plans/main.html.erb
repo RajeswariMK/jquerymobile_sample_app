@@ -1,0 +1,62 @@
+<!--[if IE 8]>
+<style type="text/css">
+  html #wrapper #right { width:729px; float:right; margin-right:100px; position:absolute; }
+  html { overflow-y: hidden;}
+  html body { height: 100%; overflow: auto; }
+  html #wrapper #left { left:0; top:0; width:254px; float:left; background:#128ec2; border-right:1px solid #cde7f2; height:100%; position:absolute; overflow: auto; }	
+  a img { border:none; }
+</style>
+<![endif]-->
+<script type="text/javascript">
+  	$(document).ready(function() {
+	$("#news a").attr('target', '_blank');
+	$("#news p:empty").remove();
+	});
+</script>
+
+ <div id="right" style="width: 720px;">
+    <div id="slides">
+      <ul id="img1">
+        <li><img src="/images/INDIA-Internet-Fund-1.jpg" alt="INDIA-Internet-Fund-1" /></li>
+        <li><img src="/images/Focused-venture-fund.jpg" alt="Focused-venture-fund" /></li>
+        <li class="mid"><img src="/images/INTERNET.jpg" class="bdr1" alt="INTERNET" /><img src="images/WEBSITE-URL.jpg" alt="WEBSITE-URL" /></li>
+        <li><img src="/images/Early-stage-internet.jpg" alt="Early-stage-internet"/></li>
+      </ul>
+      <ul id="img2">
+        <li><img src="/images/INDIA-focused.jpg" alt="INDIA-focused.jpg"/></li>
+        <li><img src="/images/SEO.jpg" alt="SEO" /></li>
+        <li><img src="/images/Corporate.jpg" alt="Corporate.jpg" /></li>
+      </ul>
+    </div>
+
+    <div id="news">
+<img src="/images/news-label.jpg" alt="News" />
+<div class="bdr"></div>
+<ul>
+<% @news.each do |news| %>
+<li>
+<% if admin? %>
+<i><%= news.published_on.strftime("%B %e, %Y") %></i>
+<div class="news_desc">
+<%= simple_format(news.description) %>
+</div>
+<br />
+<%= link_to image_tag('edit.png', :title => "Edit"), edit_news_path(news), :class => 'big_button' %>
+<%= link_to image_tag('delete.png', :title => "Delete"), news, :confirm => 'Are you sure?', :method => :delete, :class => 'big_button' %>
+<% if news.show? %><%= image_tag('visible.jpg', :title => 'Showing in front page')%><% end %>
+<% else %>
+<% if news.show? %>
+<i><%= news.published_on.strftime("%B %e, %Y") %></i>
+<div class="news_desc">
+<%= simple_format(news.description) %>
+</div>
+<% end %>
+<% end %>
+<% %>
+</li>
+<% end %>
+</ul>
+
+
+    </div>
+  </div>

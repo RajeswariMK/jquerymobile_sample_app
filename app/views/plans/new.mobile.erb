@@ -1,0 +1,8 @@
+<div data-role="header">
+		<h1>Connect With Us</h1>
+</div>
+<h3>Submit a business plan</h3>
+<% if flash[:notice] %>
+<div style="color: white; font-size: 18px; background-color: green;" id ="msg"><%= flash[:notice] %></div>
+<% end %>
+<%= render 'form' %>

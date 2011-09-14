@@ -1,0 +1,73 @@
+<script type= "text/javascript">
+  $(document).ready(function(){
+   $("#new_plan").validate();
+   });	
+     
+function validate_type()
+{
+file_name = document.getElementById('plan_file').value;
+var ext = file_name.substring(file_name.lastIndexOf('.') + 1);
+if(ext == "pdf" || ext == "doc" || ext == "docx" || ext == "ppt" || ext == "pptx" || ext == "txt" || ext == "rtf")
+{
+return true;
+} 
+else
+{
+alert("Invalid file.\nPlease select a Word or Powerpoint or PDF documents only.");
+$('#plan_file').val(''); 
+$("#plan_file").focus();
+return false;
+}
+}
+</script>
+<div id="form">
+ <div id="top-bg"></div>
+  <div id="bottom-bg">
+<%= form_for(@plan, :html => { :multipart => true }) do |f| %>
+<div>
+	<table>
+	 <tbody>	
+		<tr>
+			<td style=height:40;>
+        <%= name_text_field f %>
+    </td>
+			<td rowspan="3" class="vbdr" style=width:3%;></td>
+			<td>Brief Description of Idea:<br /><b>(less than 250 words)</b></td>
+            <td rowspan="3" class="vbdr" style=width:3%;>&nbsp;</td>
+            <td><%= f.label :file, "Attach file" %></td>
+		</tr> 	
+			
+		<tr>
+			<td style=height:40;><%= f.label :email %>
+			<%= f.text_field :email, :class => "text-area required email", :title => "Please enter email", :tabindex => 2 %></td>
+			<td rowspan="2"><%= f.text_area :description, :size => '45x5', :class => "text-field required", :title => "Please enter description", :tabindex => 4 %></td>
+			<td><%= f.file_field :file, :title => "Please attach file", :onchange => "validate_type()", :tabindex => 5 %></td>
+		</tr>
+		<tr>
+			<td style=height:40;><%= f.label :phone %>
+			<%= f.text_field :phone, :class => "text-area required", :title => "Please enter phone number", :tabindex => 3 %></td>
+			<td><%= image_submit_tag("submit.jpg", :alt => "Submit") %></td>
+		</tr>
+	 </tbody>	
+	</table>
+</div>	
+<% end %>
+</div>
+<h4><i>What do we look for?</i></h4>
+    <p class="head">IIF looks for the following aspects in its investments:</p>
+    <p class="list1">
+    <b>Great Team</b> - Most great companies have to change direction 
+multiple times before they get it right. IIF looks to invest in the type
+ of entrepreneurs who are able navigate their company to success.</p>
+    <p class="list1"><b>Clarity of Purpose</b> - Entrepreneurs must be able to summarize their idea on the back of a business card.</p>
+    <p class="list1"><b>Large Market</b> - Portfolio companies must be 
+targeting large addressable markets that offer the opportunity to build 
+(ideally) a billion dollar business.</p>
+    <p class="list1"><b>Focus</b> - Very few growth companies are 
+successful without focusing on a single offering with a value that is 
+simple for customers to understand.</p>
+    <p class="list1"><b>Pain Killers</b> - Offerings must address a deep need in the marketplace with products built with intimate knowledge of target customers.</p>
+    <p class="list1"><b>Think Differently</b> - Companies that take a contrarian view or a novel solution to an existing problem.</p>
+    <p class="list1"><b>Lasting Competitive Advantage</b> - Company will create a barrier to entry via technology advantage, economies of scale or network effect.</p>
+    <p class="list1"><b>Frugality</b> - Investments must be focused on what is critical – with an eye towards profitability.</p>
+</div>

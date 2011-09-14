@@ -1,0 +1,101 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>INDIA INTERNET FUND - Home Page</title>
+  <%= stylesheet_link_tag  'stylesheet' %> 
+  <%= stylesheet_link_tag 'demo_table', 'demo_table_jui', 'jquery-ui-1.8.15.custom' if admin?%>
+  <%= javascript_include_tag 'jquery.min', 'jquery.validate.min', 'jquery_ujs'%>
+  <%= javascript_include_tag  'jquery.dataTables.min', 'tiny_mce', 'jquery-ui-1.8.15.custom.min' if admin? %>
+  <%= csrf_meta_tag %>
+
+<script type="text/javascript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<!--[if IE 7]>
+<style type="text/css">
+html #wrapper #right { width:729px; float:right; margin-right:100px; position:absolute; }
+html #wrapper #left { width:254px; float:left; background:#128ec2; border-right:1px solid #cde7f2; height:100%; position:fixed; overflow: auto; }	
+
+</style>
+<![endif]-->
+
+</head>
+<body>
+<div id="wrapper">
+  <div id="left"><a href="/" title="INDIA Internet Fund"><img src="/images/IIF-logo.jpg" alt="INDIA Internet fund" id="logo" /></a>
+    <ul>
+      <li><%= link_to image_tag("About-us.jpg", :mouseover => image_path("About-us_hover.jpg")), "/aboutus.html"%></li>
+      <li><%= link_to image_tag("our-team.jpg", :mouseover => image_path("our-team-hover.jpg")), "/ourteam.html"%></li>
+      <li><%= link_to image_tag("portfolio.jpg", :mouseover => image_path("portfolio-hover.jpg")), "/portfolio.html" %></li>
+      <li id="last"><%= link_to image_tag("connect.jpg", :mouseover => image_path("connect-hover.jpg")), "/connect.html"%></li>
+    </ul>
+  </div>
+ <%if @main!= nil %>
+  <%= yield %>
+ <% else %>
+  <div id="right"> <%= content_for :title_image %>
+    <div class="bdr"></div>
+	<%= yield %>
+   <!--
+    <div id="form">
+      <div id="top-bg"></div>
+      <div id="bottom-bg">
+        <form id="form1" name="form1" method="post" action="">
+          <table align="center" border="0" cellpadding="0" cellspacing="0" width="95%">
+            <tbody><tr>
+              <td height="40">Name : &nbsp;<input name="textfield" class="text-area" id="textfield" type="text" /></td>
+              <td rowspan="3" class="vbdr" width="3%"></td>
+              <td>Brief Description of Idea:<br /><b>(less than 250 words)</b></td>
+              <td rowspan="3" class="vbdr" width="3%">&nbsp;</td>
+              <td>Attach File:</td>
+            </tr>
+            <tr>
+              <td height="40">Email: &nbsp;&nbsp;<input name="textfield2" class="text-area" id="textfield2" type="text" /></td>           
+              <td rowspan="2"><textarea name="textarea" cols="45" rows="5" class="text-field" id="textarea"></textarea></td>
+              <td><input name="textfield4" class="attach" id="textfield4" type="text" /> <input name="" src="/images/browse.jpg" type="image" /></td>
+            </tr>
+            <tr>
+              <td height="40">Phone: &nbsp;<input name="textfield3" class="text-area" id="textfield3" type="text" /></td>
+              <td><input src="/images/submit.jpg" name="button" id="button" value="Submit" type="image" /></td>
+            </tr>
+          </tbody></table>
+        </form>
+      </div>
+    </div> -->
+	
+	<hr />
+	<% if admin? %>
+	Admin - : <a href="/news"> Manage News </a> | <a href="/plans"> Manage Business Plans </a> | <%= link_to 'Logout', logout_path %>
+	<% end %>
+   </div>
+  <% end %> 
+</div>
+</body>
+</html>

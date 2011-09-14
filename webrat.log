@@ -1,0 +1,14 @@
+# Logfile created on 2011-07-29 10:46:26 +0530 by logger.rb/25413
+REQUESTING PAGE: GET plans_path with {} and HTTP headers {}
+REQUESTING PAGE: GET /plans with {} and HTTP headers {}
+REQUESTING PAGE: GET /plans with {} and HTTP headers {}
+REQUESTING PAGE: GET /plans with {} and HTTP headers {}
+REQUESTING PAGE: GET /plans with {} and HTTP headers {}
+REQUESTING PAGE: GET /plans with {} and HTTP headers {}
+REQUESTING PAGE: GET /plans with {} and HTTP headers {}
+REQUESTING PAGE: GET /plans/new with {} and HTTP headers {"HTTP_REFERER"=>"/plans"}
+REQUESTING PAGE: POST /plans with {"utf8"=>"\xE2\x9C\x93", "plan"=>{"name"=>"sample", "email"=>"sample@mail.com", "phone"=>"12345677", "description"=>"sample sample sample", "file"=>""}, "commit"=>"Submit"} and HTTP headers {"HTTP_REFERER"=>"/plans/new"}
+REQUESTING PAGE: GET http://www.example.com/plans/232 with {} and HTTP headers {"HTTP_REFERER"=>"/plans"}
+REQUESTING PAGE: GET /plans with {} and HTTP headers {}
+REQUESTING PAGE: GET /plans with {} and HTTP headers {}
+REQUESTING PAGE: GET /plans with {} and HTTP headers {}

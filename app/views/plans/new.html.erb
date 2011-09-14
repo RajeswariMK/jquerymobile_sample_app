@@ -1,0 +1,15 @@
+<!--[if IE 8]>
+<style type="text/css">
+  html #wrapper #left { left:0; top:0; width:254px; float:left; background:#128ec2; border-right:1px solid #cde7f2; height:100%; position:fixed; overflow: auto; }	
+</style>
+<![endif]-->
+<% content_for :title_image do %>
+  <img src="/images/connect-with-us.jpg" id="header" alt="Connect With Us" />
+<% end %>
+<h3>Submit a business plan</h3>
+<% if flash[:notice] %>
+<div style="color: white; font-size: 18px; background-color: green;" id ="msg"><%= flash[:notice] %></div>
+<% end %>
+<%= render 'form' %>
+
+<!--<%= link_to 'Back', plans_path %>-->

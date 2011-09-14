@@ -1,0 +1,50 @@
+<!--[if IE]>
+<style type ="text/css">
+  a img {border: none; }
+</style>
+<![endif]-->
+<!--[if IE 8]>
+<style type="text/css">
+  html #wrapper #left { left:0; top:0; width:254px; float:left; background:#128ec2; border-right:1px solid #cde7f2; height:100%; position:fixed; overflow: auto; }	
+  a img {border: none; }
+</style>
+<![endif]-->
+<script type="text/javascript">
+    $(document).ready(function() {
+     
+    });
+</script>	
+<% content_for :title_image do %>
+  <img src="/images/manage_news.jpg" id="header" alt="Connect With Us" />
+<% end %>
+<h3>Listing All News</h3>
+
+ <div id="news" style="float: none;"> 
+   <ul>
+    <% @news.each do |news| %>
+      <li>	
+	    <% if admin? %>
+      	<i><%= news.published_on.strftime("%B %e, %Y") %></i>
+		<div class="news_desc">
+ 	  	  <%= simple_format(news.description) %>
+		</div>
+ 		<br />
+			<%= link_to image_tag('edit.png', :title => "Edit"), edit_news_path(news), :class => 'big_button' %>
+			<%= link_to image_tag('delete.png', :title => "Delete"), news, :confirm => 'Are you sure?', :method => :delete, :class => 'big_button' %>
+			<% if news.show? %><%= image_tag('visible.jpg', :title => 'Showing in front page')%><% end %>
+		<% else %>
+		    <% if news.show? %>
+		    <i><%= news.published_on.strftime("%B %e, %Y") %></i>	
+			<div class="news_desc">
+ 	  	      <%= simple_format(news.description) %>
+		    </div>
+		   <% end %>	
+ 		<% end %>
+		<% %>
+ 	 </li>
+    <% end %>
+   </ul>
+</div>
+<% if admin? %>
+<%= link_to 'Create a News', new_news_path %>
+<% end %>

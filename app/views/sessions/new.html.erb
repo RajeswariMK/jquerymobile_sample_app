@@ -1,0 +1,14 @@
+<!--[if IE 8]>
+<style type="text/css">
+  html #wrapper #left { left:0; top:0; width:254px; float:left; background:#128ec2; border-right:1px solid #cde7f2; height:100%; position:fixed; overflow: auto; }	
+</style>
+<![endif]-->
+<% content_for :title_image do %>
+  <img src="/images/admin.jpg" id="header" alt="Connect With Us" />
+<% end %>
+<h3>Manage News and Business Plans</h3>
+<%= form_tag sessions_path do %>  
+  <p>Please enter the Admin password:</p>
+  <%= password_field_tag :password %>  
+  <%= submit_tag "Login" %>  
+<% end %>  

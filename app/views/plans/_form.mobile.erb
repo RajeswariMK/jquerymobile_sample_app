@@ -1,0 +1,14 @@
+<script type= "text/javascript">
+  $(document).ready(function(){
+   $("#new_plan").validate();
+   });	
+</script>  
+<div id="form" data-direction="reverse">
+  <%= form_for(@plan) do |f| %>
+    <%= name_text_field f %>
+    <%= f.label :email %><%= f.text_field :email, :class => "text-area required email", :title => "Please enter email", :tabindex => 2 %>
+    <%= f.label :phone %><%= f.text_field :phone, :class => "text-area required", :title => "Please enter phone number", :tabindex => 3 %>
+    <%= f.label :description %><%= f.text_area :description, :size => '45x5', :class => "text-field required", :title => "Please enter description", :tabindex => 4 %> 
+    <div><%= submit_tag 'Submit' %></div>
+  <% end %>
+</div>  
